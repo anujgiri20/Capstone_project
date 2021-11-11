@@ -211,6 +211,26 @@ app.post("/Cardio", async (request, response) => {
 
 
 
+//yoga starts
+//Cardio data collection
+app.get("/yogadata", async (request, response) => {
+   const client = await createconnections();
+   const result = await client.db("gymDatabase").collection("yoga").find({}).toArray();
+   response.send(result)
+});
+app.post("/yoga", async (request, response) => {
+   const client = await createconnections();
+   const add_data = request.body
+
+   const result = await client.db("gymDatabase").collection("yoga").insertMany(add_data)
+   console.log(add_data, result)
+   response.send(result)
+});
+
+
+
+
+
 app.listen(PORT, () => console.log("server is started in port 1234"));
 
 
