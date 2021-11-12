@@ -24,6 +24,8 @@ app.use(cors())
 app.get("/chestdata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("data").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/chest", async (request, response) => {
