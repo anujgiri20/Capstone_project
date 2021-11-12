@@ -34,6 +34,7 @@ app.post("/chest", async (request, response) => {
    const add_data = request.body
 
    const result = await client.db("gymDatabase").collection("data").insertMany(add_data)
+ 
    console.log(add_data, result)
    response.send(result)
 });
@@ -70,6 +71,9 @@ app.patch("/chestupdate/:id", async(request, response) => {
 app.get("/bicepsdata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("biceps").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
+   
    response.send(result)
 });
 app.post("/biceps", async (request, response) => {
@@ -88,6 +92,8 @@ app.post("/biceps", async (request, response) => {
 app.get("/backdata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("back").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/back", async (request, response) => {
@@ -108,6 +114,8 @@ app.post("/back", async (request, response) => {
 app.get("/Tricepsdata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("Triceps").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/Triceps", async (request, response) => {
@@ -126,6 +134,8 @@ app.post("/Triceps", async (request, response) => {
 app.get("/Shoulderdata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("Shoulder").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/Shoulder", async (request, response) => {
@@ -144,6 +154,8 @@ app.post("/Shoulder", async (request, response) => {
 app.get("/Legsdata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("Legs").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/Legs", async (request, response) => {
@@ -162,6 +174,8 @@ app.post("/Legs", async (request, response) => {
 app.get("/Abdominaldata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("Abdominal").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/Abdominal", async (request, response) => {
@@ -180,6 +194,8 @@ app.post("/Abdominal", async (request, response) => {
 app.get("/Combineddata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("Combined").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/Combined", async (request, response) => {
@@ -199,6 +215,8 @@ app.post("/Combined", async (request, response) => {
 app.get("/Cardiodata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("Cardio").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/Cardio", async (request, response) => {
@@ -219,6 +237,8 @@ app.post("/Cardio", async (request, response) => {
 app.get("/yogadata", async (request, response) => {
    const client = await createconnections();
    const result = await client.db("gymDatabase").collection("yoga").find({}).toArray();
+    response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
    response.send(result)
 });
 app.post("/yoga", async (request, response) => {
