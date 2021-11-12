@@ -34,6 +34,8 @@ app.post("/chest", async (request, response) => {
    const add_data = request.body
 
    const result = await client.db("gymDatabase").collection("data").insertMany(add_data)
+     response.header("Access-Control-Allow-Origin","*")
+   response.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept")
  
    console.log(add_data, result)
    response.send(result)
