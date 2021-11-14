@@ -254,22 +254,11 @@ app.post("/yoga", async (request, response) => {
 
 
 
-
-// deleting section
-//delete biceps
-app.delete("/deletebiceps/:id", async(request, response) => {
-   const id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("biceps").deleteOne({_id: new ObjectId(id)})
-   console.log(user)
-   response.send(user)
-   
-});
 //delete back
 app.delete("/deleteback/:id", async(request, response) => {
-   const id = request.params.id;
+   const back_id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("back").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("back").deleteOne({_id: new ObjectId(back_id)})
    console.log(user)
    response.send(user)
    
@@ -278,7 +267,7 @@ app.delete("/deleteback/:id", async(request, response) => {
 app.delete("/deletetriceps/:id", async(request, response) => {
    const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Triceps").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("Triceps").deleteOne({_id:id})
    console.log(user)
    response.send(user)
    
@@ -287,7 +276,7 @@ app.delete("/deletetriceps/:id", async(request, response) => {
 app.delete("/deleteShoulder/:id", async(request, response) => {
    const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Shoulder").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("Shoulder").deleteOne({_id:id})
    console.log(user)
    response.send(user)
    
@@ -296,7 +285,7 @@ app.delete("/deleteShoulder/:id", async(request, response) => {
 app.delete("/deleteLegs/:id", async(request, response) => {
    const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Legs").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("Legs").deleteOne({_id:id})
    console.log(user)
    response.send(user)
    
@@ -305,7 +294,7 @@ app.delete("/deleteLegs/:id", async(request, response) => {
 app.delete("/deleteAbdominal/:id", async(request, response) => {
    const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Abdominal").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("Abdominal").deleteOne({_id:id})
    console.log(user)
    response.send(user)
    
@@ -314,7 +303,7 @@ app.delete("/deleteAbdominal/:id", async(request, response) => {
 app.delete("/deleteCombined/:id", async(request, response) => {
    const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Combined").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("Combined").deleteOne({_id:id});
    console.log(user)
    response.send(user)
    
@@ -324,7 +313,7 @@ app.delete("/deleteCombined/:id", async(request, response) => {
 app.delete("/deleteCardio/:id", async(request, response) => {
    const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Cardio").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("Cardio").deleteOne({_id:id})
    console.log(user)
    response.send(user)
    
@@ -339,6 +328,23 @@ app.delete("/deleteyoga/:id", async(request, response) => {
    response.send(user)
    
 });
+
+
+app.delete("/deletebiceps/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("biceps").deleteOne({_id:id})
+   console.log(id)
+   console.log(user)
+   response.send(user)
+   
+});
+
+
+
+
+
+
 
 
 
