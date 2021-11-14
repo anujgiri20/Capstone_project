@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import { MongoClient } from "mongodb";
+import  { MongoClient,ObjectId } from "mongodb";
 import cors from "cors"
 import dotenv from "dotenv"
 
@@ -41,14 +41,13 @@ app.post("/chest", async (request, response) => {
    response.send(result)
 });
 app.delete("/deletechest/:id", async(request, response) => {
-   const {id} = request.params.id;
+   const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("data").deleteOne({id:id})
-   
+   const user= await client.db("gymDatabase").collection("data").deleteOne({_id: new ObjectId(id)})
+   console.log(id)
    console.log(user)
    response.send(user)
    
-
 });
 app.patch("/chestupdate/:id", async(request, response) => {
    console.log(request.params);
