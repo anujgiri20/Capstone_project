@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import  { MongoClient,ObjectId } from "mongodb";
+import mongodb, { MongoClient } from "mongodb";
 import cors from "cors"
 import dotenv from "dotenv"
 
@@ -43,12 +43,13 @@ app.post("/chest", async (request, response) => {
 app.delete("/deletechest/:id", async(request, response) => {
    const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("data").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("data").deleteOne({_id: new mongodb.ObjectId(id)})
    console.log(id)
    console.log(user)
    response.send(user)
    
 });
+
 app.patch("/chestupdate/:id", async(request, response) => {
    console.log(request.params);
 
@@ -85,6 +86,14 @@ app.post("/biceps", async (request, response) => {
    console.log(add_data, result)
    response.send(result)
 });
+app.delete("/deletebiceps/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("biceps").deleteOne({_id: new mongodb.ObjectId(id)})
+   console.log(user)
+   response.send(user)
+   
+});
 
 
 
@@ -104,6 +113,14 @@ app.post("/back", async (request, response) => {
    const result = await client.db("gymDatabase").collection("back").insertMany(add_data)
    console.log(add_data, result)
    response.send(result)
+});
+app.delete("/deleteback/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("back").deleteOne({_id: new mongodb.ObjectId(id)})
+   console.log(user)
+   response.send(user)
+   
 });
 
 
@@ -127,7 +144,14 @@ app.post("/Triceps", async (request, response) => {
    console.log(add_data, result)
    response.send(result)
 });
-
+app.delete("/deleteTriceps/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("Triceps").deleteOne({_id: new mongodb.ObjectId(id)})
+   console.log(user)
+   response.send(user)
+   
+});
 
 
 
@@ -147,7 +171,14 @@ app.post("/Shoulder", async (request, response) => {
    console.log(add_data, result)
    response.send(result)
 });
-
+app.delete("/deleteShoulder/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("Shoulder").deleteOne({_id: new mongodb.ObjectId(id)})
+   console.log(user)
+   response.send(user)
+   
+});
 
 
 
@@ -167,7 +198,14 @@ app.post("/Legs", async (request, response) => {
    console.log(add_data, result)
    response.send(result)
 });
-
+app.delete("/deleteLegs/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("Legs").deleteOne({_id: new mongodb.ObjectId(id)})
+   console.log(user)
+   response.send(user)
+   
+});
 
 
 
@@ -186,6 +224,14 @@ app.post("/Abdominal", async (request, response) => {
    const result = await client.db("gymDatabase").collection("Abdominal").insertMany(add_data)
    console.log(add_data, result)
    response.send(result)
+});
+app.delete("/deleteAbdominal/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("Abdominal").deleteOne({_id: new mongodb.ObjectId(id)})
+   console.log(user)
+   response.send(user)
+   
 });
 
 
@@ -207,6 +253,14 @@ app.post("/Combined", async (request, response) => {
    console.log(add_data, result)
    response.send(result)
 });
+app.delete("/deleteCombined/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("Combined").deleteOne({_id: new mongodb.ObjectId(id)})
+   console.log(user)
+   response.send(user)
+   
+});
 
 
 
@@ -227,6 +281,14 @@ app.post("/Cardio", async (request, response) => {
    const result = await client.db("gymDatabase").collection("Cardio").insertMany(add_data)
    console.log(add_data, result)
    response.send(result)
+});
+app.delete("/deleteCardio/:id", async(request, response) => {
+   const id = request.params.id;
+   const client = await createconnections();
+   const user= await client.db("gymDatabase").collection("Cardio").deleteOne({_id: new mongodb.ObjectId(id)})
+   console.log(user)
+   response.send(user)
+   
 });
 
 
@@ -250,95 +312,15 @@ app.post("/yoga", async (request, response) => {
    console.log(add_data, result)
    response.send(result)
 });
-
-
-
-
-//delete back
-app.delete("/deleteback/:id", async(request, response) => {
-   const back_id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("back").deleteOne({_id: new ObjectId(back_id)})
-   console.log(user)
-   response.send(user)
-   
-});
-//delete Triceps
-app.delete("/deletetriceps/:id", async(request, response) => {
-   const id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Triceps").deleteOne({_id:id})
-   console.log(user)
-   response.send(user)
-   
-});
-//delete Shoulder
-app.delete("/deleteShoulder/:id", async(request, response) => {
-   const id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Shoulder").deleteOne({_id:id})
-   console.log(user)
-   response.send(user)
-   
-});
-//delete Legs
-app.delete("/deleteLegs/:id", async(request, response) => {
-   const id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Legs").deleteOne({_id:id})
-   console.log(user)
-   response.send(user)
-   
-});
-//delete Abdominal
-app.delete("/deleteAbdominal/:id", async(request, response) => {
-   const id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Abdominal").deleteOne({_id:id})
-   console.log(user)
-   response.send(user)
-   
-});
-//delete Combined
-app.delete("/deleteCombined/:id", async(request, response) => {
-   const id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Combined").deleteOne({_id:id});
-   console.log(user)
-   response.send(user)
-   
-});
-
-//delete Cardio
-app.delete("/deleteCardio/:id", async(request, response) => {
-   const id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("Cardio").deleteOne({_id:id})
-   console.log(user)
-   response.send(user)
-   
-});
-
-//delete yoga
 app.delete("/deleteyoga/:id", async(request, response) => {
    const id = request.params.id;
    const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("yoga").deleteOne({_id: new ObjectId(id)})
+   const user= await client.db("gymDatabase").collection("yoga").deleteOne({_id: new mongodb.ObjectId(id)})
    console.log(user)
    response.send(user)
    
 });
 
-
-app.delete("/deletebiceps/:id", async(request, response) => {
-   const id = request.params.id;
-   const client = await createconnections();
-   const user= await client.db("gymDatabase").collection("biceps").deleteOne({_id:id})
-   console.log(id)
-   console.log(user)
-   response.send(user)
-   
-});
 
 
 
