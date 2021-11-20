@@ -91,6 +91,17 @@ app.delete("/deletebiceps/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/bicepsupdate/:id", async(request, response) => {
+   console.log(request.params);
+
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("biceps").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
 
 
 
@@ -119,7 +130,17 @@ app.delete("/deleteback/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/backupdate/:id", async(request, response) => {
+   console.log(request.params);
 
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("back").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
 
 
 
@@ -149,7 +170,17 @@ app.delete("/deleteTriceps/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/Tricepsupdate/:id", async(request, response) => {
+   console.log(request.params);
 
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("Triceps").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
 
 
 //Shoulder data collection
@@ -176,7 +207,17 @@ app.delete("/deleteShoulder/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/Shoulderupdate/:id", async(request, response) => {
+   console.log(request.params);
 
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("Shoulder").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
 
 
 //Legs data collection
@@ -203,7 +244,17 @@ app.delete("/deleteLegs/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/Legsupdate/:id", async(request, response) => {
+   console.log(request.params);
 
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("Legs").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
 
 
 //Abdominal data collection
@@ -230,7 +281,17 @@ app.delete("/deleteAbdominal/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/Abdominalupdate/:id", async(request, response) => {
+   console.log(request.params);
 
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("Abdominal").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
 
 
 
@@ -258,7 +319,17 @@ app.delete("/deleteCombined/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/Combinedupdate/:id", async(request, response) => {
+   console.log(request.params);
 
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("Combined").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
 
 
 
@@ -287,7 +358,17 @@ app.delete("/deleteCardio/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/Cardioupdate/:id", async(request, response) => {
+   console.log(request.params);
 
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("Cardio").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
 
 
 
