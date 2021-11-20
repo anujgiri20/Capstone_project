@@ -53,17 +53,14 @@ app.delete("/deletechest/:id", async(request, response) => {
 app.patch("/chestupdate/:id", async(request, response) => {
    console.log(request.params);
 
-   const {id} = request.params.id;
+   const id = request.params.id;
    const client = await createconnections();
-   const newdata=  request.body;
-   const user= await client.db("gymDatabase").collection("data").updateOne({id:id},{$set:newdata})
    
+   const user= await client.db("gymDatabase").collection("data").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
    // console.log(user)
    response.send(user)
-   console.log(newdata)
-   
 
-});
+ });
 
 
 
