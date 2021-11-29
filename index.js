@@ -398,6 +398,19 @@ app.delete("/deleteyoga/:id", async(request, response) => {
    response.send(user)
    
 });
+app.patch("/yogaupdate/:id", async(request, response) => {
+   console.log(request.params);
+
+   const id = request.params.id;
+   const client = await createconnections();
+   
+   const user= await client.db("gymDatabase").collection("yoga").updateOne({_id:new mongodb.ObjectId(id)},{$set:{"data.bi.img":request.body.img,"data.bi.name":request.body.name,"data.bi.description":request.body.description,"data.bi.steps":request.body.steps,"data.bi.Tips":request.body.Tips}})
+   // console.log(user)
+   response.send(user)
+
+ });
+
+
 
 
 
